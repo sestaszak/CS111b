@@ -103,8 +103,14 @@ public class PokerHands {
     public static boolean containsStraight(int hand[]){
         //checks if hand contains a straight
         //sort array first...
-
-
+        boolean possibleStraight = true;
+        Arrays.sort(hand);
+        for(int i=0; i<hand.length-1; i++){
+            if(hand[i]+1!=hand[i+1]){
+                possibleStraight = false;
+            }
+        }
+        return possibleStraight;
     }
 
     public static int[] getHand(){
