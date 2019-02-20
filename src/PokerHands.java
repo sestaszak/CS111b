@@ -7,7 +7,9 @@ public class PokerHands {
         Scanner input = new Scanner(System.in);
         char keepPlaying = 'y';
         while(keepPlaying=='y') {
-            int hand[] = getHand();
+
+            //int[]  hand = generateHand();
+            int[] hand = getHand();
 
             if(containsFourOfaKind(hand)){
                 System.out.println("Four of a kind!");
@@ -31,13 +33,7 @@ public class PokerHands {
                 System.out.println("High Card!");
             }
 
-//            System.out.println("Checking for one pair: " + containsPair(hand));
-//            System.out.println("Checking for two pairs: " + containsTwoPair(hand));
-//            //System.out.println("Count of pairs: " + handCounts(hand, 2));
-//            System.out.println("Checking for three of a kind: " + containsThreeOfaKind(hand));
-//            System.out.println("Checking for full house: " + containsFullHouse(hand));
-//            System.out.println("Checking for four of a kind: " + containsFourOfaKind(hand));
-            System.out.println("Do you want to play again? (y/n)");
+            System.out.print("Do you want to play again? (y/n)");
             keepPlaying = input.next().charAt(0);
         }
     }
@@ -48,8 +44,9 @@ public class PokerHands {
             int ccount = cardCount(hand, hand[i]);
             if(ccount == typen){
                 typecount ++;
+                //this is counting for each, so a pair gets counted twice, four of a kind gets counted 4 times
             }
-           // System.out.println("iter: " + i + "card count: " + ccount + " type count: " + typecount + " and type: " + typen);
+
         }
         return typecount;
     }
@@ -85,12 +82,8 @@ public class PokerHands {
 
     public static boolean containsFullHouse(int hand[]){
         //checks if hand contains a full house (pair + 3 of kind)
-        int pair = handCounts(hand, 2);
-        int trip = handCounts(hand, 3);
 
-        //could also call containsThreeOfaKind and containsPair
-
-        return (pair==1 & trip==1);
+        return (containsPair(hand) & containsThreeOfaKind(hand));
     }
 
     public static boolean containsFourOfaKind(int hand[]){
@@ -124,10 +117,46 @@ public class PokerHands {
                 hand[i] = card;
             }
             else {
-                System.out.println("Please only use 2-9. ");
+                System.out.println("Please only use 2-9: ");
                 //need to get input again
+                hand[i] = input.nextInt();
             }
         }
         return hand;
     }
+
+    public static int[] generateHand(char htype){
+        //depending on user input for hand type (htype) generate or get hand
+        //not quite pretty yet.
+        //instead of asking for hand, generate it
+        int hand[] = new int[5];
+        if(htype == 'r') {
+            for (int i = 0; i < hand.length; i++) {
+                hand[i] = randCardValue();
+            }
+            System.out.println("Your hand consists of: " + hand[0] + ", " + hand[1] + ", " + hand[2] + ", " + hand[3] + ", " + hand[4]);
+        }
+        else if(htype== 'o') {
+            Scanner input = new Scanner(System.in);
+            System.out.println("Enter five numeric cards, no face cards. Use 2-9.");
+            for(int i=0; i<hand.length; i++){
+                System.out.print("Card " + (i+1) + ":");
+                int card = input.nextInt();
+                if(card==2 | card==3 | card==4 | card==5 | card==6 | card==7 | card==8 | card==9){
+                    hand[i] = card;
+                }
+                else {
+                    System.out.println("Please only use 2-9: ");
+                    //need to get input again
+                    hand[i] = input.nextInt();
+                }
+            }
+        }
+        return hand;
+    }
+    public static int randCardValue(){
+        Random rand = new Random();
+        return rand.nextInt(8) + 2;
+    }
+
 }
