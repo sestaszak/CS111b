@@ -17,13 +17,19 @@ public class HighScores {
     public static void initialize(ArrayList<String> names, ArrayList<Integer> scores){
         //user input
         Scanner input = new Scanner(System.in);
-        for(int index = 0; index<5; index++){
-            System.out.print("Enter the name for score #" + (index+1) + ":");
+        int obsNum = 1;
+        boolean addMore = true;
+        //for(int index = 0; index<5; index++){
+        while(addMore){
+            System.out.print("Enter the name for score #" + obsNum + ":");
             String name = input.next();
             names.add(name);
-            System.out.print("Enter the score for score #" + (index+1) + ":");
+            System.out.print("Enter the score for score #" + obsNum + ":");
             int score = input.nextInt();
             scores.add(score);
+            System.out.print("Would you like to add another? (y/n)");
+            addMore = (input.next().charAt(0) == 'y');
+            obsNum ++;
         }
 
     }
@@ -60,7 +66,7 @@ public class HighScores {
     public static void display(ArrayList<String> names, ArrayList<Integer> scores){
         //display contents of both arraylists
         System.out.println("Top Scorers:");
-        for(int index = 0; index<5; index++){
+        for(int index = 0; index<names.size(); index++){
             System.out.println(names.get(index) + ": " + scores.get(index));
         }
 
