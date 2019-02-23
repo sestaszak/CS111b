@@ -7,34 +7,76 @@ public class PokerHands {
         Scanner input = new Scanner(System.in);
         char keepPlaying = 'y';
         while(keepPlaying=='y') {
-
-            //int[]  hand = generateHand();
-            int[] hand = getHand();
-
-            if(containsFourOfaKind(hand)){
-                System.out.println("Four of a kind!");
-            }
-            else if(containsFullHouse(hand)){
-                System.out.println("Full house!");
-            }
-            else if(containsThreeOfaKind(hand)) {
-                System.out.println("Three of a kind!");
-            }
-            else if(containsTwoPair(hand)) {
-                System.out.println("Two Pair!");
-            }
-            else if(containsPair(hand)) {
-                System.out.println("Pair!");
-            }
-            else if(containsStraight(hand)) {
-                System.out.println("Straight!");
-            }
-            else {
-                System.out.println("High Card!");
-            }
+            //playOneHand();
+            playManyHands(100);
 
             System.out.print("Do you want to play again? (y/n)");
             keepPlaying = input.next().charAt(0);
+        }
+    }
+
+    public static void playManyHands(int nhand){
+
+        int quads = 0;
+        int house = 0;
+        int trips = 0;
+        int pair2 = 0;
+        int pair = 0;
+        int straight = 0;
+        int high = 0;
+        for(int i=0; i<nhand; i++){
+            int[]  hand = randomHand();
+
+            if(containsFourOfaKind(hand)){
+                quads ++;
+            }
+            else if(containsFullHouse(hand)){
+                house ++;
+            }
+            else if(containsThreeOfaKind(hand)) {
+                trips ++;
+            }
+            else if(containsTwoPair(hand)) {
+                pair2 ++;
+            }
+            else if(containsPair(hand)) {
+                pair ++;
+            }
+            else if(containsStraight(hand)) {
+                straight ++;
+            }
+            else {
+                high ++;
+            }
+        }
+        System.out.println("In " + nhand + " tries there were: " + high + " high cards, " + pair + " single pairs, "
+                + pair2 + " two pairs, " + trips + " three of a kinds, " + quads + " four of a kinds, " + house + " full houses, and " + straight + " straights");
+    }
+
+    public static void playOneHand(){
+        //int[]  hand = generateHand();
+        int[] hand = getHand();
+
+        if(containsFourOfaKind(hand)){
+            System.out.println("Four of a kind!");
+        }
+        else if(containsFullHouse(hand)){
+            System.out.println("Full house!");
+        }
+        else if(containsThreeOfaKind(hand)) {
+            System.out.println("Three of a kind!");
+        }
+        else if(containsTwoPair(hand)) {
+            System.out.println("Two Pair!");
+        }
+        else if(containsPair(hand)) {
+            System.out.println("Pair!");
+        }
+        else if(containsStraight(hand)) {
+            System.out.println("Straight!");
+        }
+        else {
+            System.out.println("High Card!");
         }
     }
 
@@ -151,6 +193,13 @@ public class PokerHands {
                     hand[i] = input.nextInt();
                 }
             }
+        }
+        return hand;
+    }
+    public static int[] randomHand(){
+        int hand[] = new int[5];
+        for (int i = 0; i < hand.length; i++) {
+            hand[i] = randCardValue();
         }
         return hand;
     }
