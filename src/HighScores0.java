@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class HighScores {
+public class HighScores0 {
 
     public static void main(String args[]){
         // declare and initialize two array lists
