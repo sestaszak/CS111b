@@ -4,14 +4,29 @@ public class Circle {
 
 //    Four constructors for circle
 
-//    Circle(Point o, double r)
-//    Circle(double xValue, double yValue, double r)
-//    Circle()
-//    Circle(Circle c)
+    public Circle(Point o, double r){
+        center = new Point(o);
+        radius = r;
+    }
+    public Circle(double xValue, double yValue, double r){
+        center = new Point(xValue, yValue);
+        radius = r;
+    }
+    public Circle(){
+        center = new Point();
+        radius = 1.0;
+    }
+    public Circle(Circle c){
+//        center = c.getCenter();
+        center = new Point(c.getCenter());
+        radius = c.getRadius();
+    }
 //
 //
     public Point getCenter(){
-        return center;
+//        return center;
+        //this change makes equals method not correct--> updated to check x and y vals instead
+        return new Point(center);
     }
 //
     public void setCenter(Point p){
@@ -25,6 +40,8 @@ public class Circle {
 //
     public double getX(){
         return center.getX();
+//        Point centerCopy = new Point(center);
+//        return centerCopy.getX();
     }
 //
 //
@@ -53,11 +70,16 @@ public class Circle {
 //
     public String toString(){
         //return a string that states x, y and radius
-        return "This is a string";
+        return "This is a circle with center " + center.toString() + " and radius " + radius;
     }
 //
     public boolean equals(Circle c){
-        return true;
+        boolean xEq, yEq, rEq;
+        xEq = (center.getX() == c.getX());
+        yEq = (center.getY() == c.getY());
+        rEq = (radius == c.getRadius());
+
+        return (xEq & yEq & rEq);
     }
 //
 //
