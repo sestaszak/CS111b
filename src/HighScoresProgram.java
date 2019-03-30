@@ -30,7 +30,7 @@ public class HighScoresProgram {
         //sort scores list and update order of names to match
         int checkLoc, index, maxVal, maxIndex, clVal;
         String maxName, clName;
-        HighScore[] tempSorted = new HighScore[5];
+        //HighScore[] tempSorted = new HighScore[5];
 
         for(checkLoc=0; checkLoc < scores.length-1; checkLoc++){
             maxIndex = checkLoc;

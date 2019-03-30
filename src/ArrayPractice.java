@@ -34,4 +34,20 @@ public class ArrayPractice {
 //        System.out.print("How many numbers do you want to include? How long of an array?: ");
 //        int nn = input.nextInt();
 //    }
+
+    public static boolean allEqual(int[] a){
+        boolean eqCheck;
+        if(a.length == 1) {eqCheck = true;}
+        else if(a.length == 0) {eqCheck = false;}
+        else{
+            eqCheck = true;
+            for(int i = 1; i<a.length; i++){
+                eqCheck = (a[i] == a[i-1]);
+            }
+        }
+
+        return eqCheck;
+    }
+
+
 }

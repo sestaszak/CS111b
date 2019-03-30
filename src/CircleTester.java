@@ -38,25 +38,5 @@ public class CircleTester {
             System.out.println(cir.toString() + " and area of " + cir.getArea());
         }
 
-        public static void checkCircles(ArrayList<MyCircle> circles){
-            int crntCt = 1;
-            while(circles.size()>1){
-                MyCircle crntTest = circles.get(0);
-
-                for(int i=1; i<circles.size(); i++){
-                    int [] compCt = {};
-                    // TO FIX:
-                    // array of original circle indeces?
-                    // index to print out for comparison doesn't quite work (isn't helpful).
-                    System.out.println("Comparing circle " + crntCt + " to circle " +  (i+1) + ", do they overlap? " + crntTest.doesOverlap(circles.get(i)));
-                }
-                circles.remove(0);
-                crntCt++;
-            }
-
-
-        }
-
-
 
 }
