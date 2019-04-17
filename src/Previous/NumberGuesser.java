@@ -1,10 +1,12 @@
+package Previous;
+
 public class NumberGuesser {
 
-    protected int low;
-    protected int high;
-    protected int currentGuess;
-    protected int initLow;
-    protected int initHigh;
+    private int low;
+    private int high;
+    private int currentGuess;
+    private int initLow;
+    private int initHigh;
 
 
     public NumberGuesser(int lowerBound, int upperBound){

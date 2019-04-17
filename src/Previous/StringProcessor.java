@@ -1,3 +1,5 @@
+package Previous;
+
 public class StringProcessor {
     //declare a private string variable?
     private String ss;

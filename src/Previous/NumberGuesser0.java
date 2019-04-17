@@ -1,6 +1,8 @@
+package Previous;
+
 import java.util.*;
 
-public class NumberGuesserPlus{
+public class NumberGuesser0 {
 
     public static void main(String[] args){
         do {

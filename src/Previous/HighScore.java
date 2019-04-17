@@ -1,3 +1,5 @@
+package Previous;
+
 public class HighScore {
 
 //    Class HighScore

@@ -1,3 +1,5 @@
+package Previous;
+
 import java.util.Scanner;
 
 public class StringProcessorProgram {
@@ -15,7 +17,7 @@ public class StringProcessorProgram {
 
         do{
             Scanner input = new Scanner(System.in);
-            //get string and make StringProcessor object
+            //get string and make Previous.StringProcessor object
             System.out.print("Enter a line of text: ");
             String text = input.nextLine();
             StringProcessor ui = new StringProcessor(text);
