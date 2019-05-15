@@ -12,12 +12,11 @@ public class RandomGuessingProgram {
         playManualGame(1,10);
         playManualGame(1, 100);
 
-        playRepsGame(10, 1, 100);
+        playRepsGame(100, 1, 100);
 
     }
 
     public static void playManualGame(int startLow, int startHigh){
-
         RandomNumberGuesser guesser = new RandomNumberGuesser(startLow, startHigh);
         int guess = guesser.getCurrentGuess();
         //System.out.println("Starting guess: " + guess);
@@ -74,6 +73,7 @@ public class RandomGuessingProgram {
 
     public static void playRepsGame(int reps, int startLow, int startHigh){
         Random random = new Random();
+//        NumberGuesser guesser = new NumberGuesser(startLow, startHigh);
         RandomNumberGuesser guesser = new RandomNumberGuesser(startLow, startHigh);
         int totalGuessCount = 0;
 
